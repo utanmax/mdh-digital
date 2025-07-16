@@ -576,76 +576,62 @@
             const data = Object.fromEntries(formData);
             
             try {
-                // Email configuration for SMTP.ZOHO.EU
-                const emailData = {
-                    to: 'info@mdh-digital.net',
-                    subject: `Strategic Partnership Inquiry - ${data.inquiryType} from ${data.organization}`,
-                    message: `
-New Strategic Partnership Inquiry
-
-Contact Information:
-- Name: ${data.firstName} ${data.lastName}
-- Organization: ${data.organization}
-- Email: ${data.email}
-- Phone: ${data.phone || 'Not provided'}
-
-Inquiry Details:
-- Type: ${data.inquiryType}
-- Domains of Interest: ${data.domains || 'Not specified'}
-
-Message:
-${data.message}
-
----
-Sent from MDH Digital Contact Form
-Timestamp: ${new Date().toISOString()}
-                    `,
-                    // SMTP Configuration placeholders - you'll need to implement server-side processing
-                    smtp: {
-                        host: 'smtp.zoho.eu',
-                        port: 587,
-                        secure: false,
-                        auth: {
-                            user: 'YOUR_ZOHO_EMAIL', // Replace with actual email
-                            pass: 'YOUR_ZOHO_PASSWORD' // Replace with actual password
-                        }
-                    }
-                };
+                // Send to PHP endpoint
+                const response = await fetch('https://sien.it/contact-form/contact.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        firstName: data.firstName,
+                        lastName: data.lastName,
+                        organization: data.organization,
+                        email: data.email,
+                        phone: data.phone || '',
+                        inquiryType: data.inquiryType,
+                        domains: data.domains || '',
+                        message: data.message,
+                        source: 'MDH Digital Contact Form',
+                        timestamp: new Date().toISOString()
+                    })
+                });
                 
-                // Since GitHub Pages only serves static content, you'll need to:
-                // 1. Use a serverless function (Vercel, Netlify)
-                // 2. Use a third-party service (EmailJS, Formspree)
-                // 3. Set up a simple PHP/Node.js backend
+                const result = await response.json();
                 
-                // For now, we'll simulate the email sending
-                // Replace this with actual email sending logic
-                console.log('Email data prepared:', emailData);
-                
-                // Simulate API call delay
-                await new Promise(resolve => setTimeout(resolve, 2000));
-                
-                // For demonstration - you'll need to implement actual email sending
-                // This could be done via:
-                // 1. A serverless function endpoint
-                // 2. EmailJS service
-                // 3. Your own backend service
-                
-                throw new Error('Email service not yet configured');
+                if (response.ok && result.success) {
+                    // Success
+                    statusMessage.className = 'status-message success';
+                    statusMessage.innerHTML = `
+                        <strong>Message sent successfully!</strong><br>
+                        Thank you for your inquiry. We will respond within 24 hours.
+                    `;
+                    statusMessage.style.display = 'block';
+                    
+                    // Reset form
+                    this.reset();
+                    
+                    // Clear any field styling
+                    const inputs = this.querySelectorAll('input, select, textarea');
+                    inputs.forEach(input => {
+                        input.style.borderColor = '';
+                    });
+                    
+                } else {
+                    // Server returned error
+                    throw new Error(result.error || 'Server error occurred');
+                }
                 
             } catch (error) {
-                console.error('Error sending email:', error);
+                console.error('Error sending form:', error);
                 
-                // For now, show a temporary message with contact info
+                // Show error message
                 statusMessage.className = 'status-message error';
                 statusMessage.innerHTML = `
-                    <strong>Form submitted successfully!</strong><br>
-                    We have received your inquiry and will respond within 24 hours.<br>
-                    For urgent matters, please contact us directly at: <strong>info@mdh-digital.net</strong>
+                    <strong>Error sending message</strong><br>
+                    ${error.message || 'Please try again or contact us directly at info@mdh-digital.net'}
                 `;
                 statusMessage.style.display = 'block';
-                
-                // Reset form
-                this.reset();
             }
             
             // Re-enable submit button
