@@ -213,114 +213,113 @@
             padding: 50px 40px;
             margin: 60px 0;
             backdrop-filter: blur(10px);
+            text-align: center;
         }
         
         .contact-section h2 {
-            text-align: center;
             font-size: 2.2em;
             margin-bottom: 15px;
             color: #00D9FF;
         }
         
         .contact-section .intro {
-            text-align: center;
             color: #8B949E;
             margin-bottom: 40px;
             font-size: 1.1em;
         }
         
-        .contact-form {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        
-        .form-group {
-            margin-bottom: 25px;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            color: #C9D1D9;
-            font-weight: 500;
-        }
-        
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            width: 100%;
-            padding: 15px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            color: #ffffff;
-            font-size: 1em;
-            transition: all 0.3s ease;
-        }
-        
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: #00D9FF;
-            box-shadow: 0 0 0 2px rgba(0, 217, 255, 0.1);
-        }
-        
-        .form-group textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
-        
-        .form-row {
+        .contact-info {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 20px;
+            gap: 40px;
+            margin-bottom: 40px;
+            align-items: start;
         }
         
-        .submit-btn {
-            width: 100%;
-            padding: 18px;
-            background: linear-gradient(135deg, #00D9FF 0%, #0099CC 100%);
-            color: #ffffff;
-            border: none;
-            border-radius: 8px;
-            font-size: 1.1em;
+        .email-contact {
+            text-align: center;
+        }
+        
+        .email-contact h3 {
+            color: #C9D1D9;
+            margin-bottom: 20px;
+            font-size: 1.3em;
+        }
+        
+        .email-link {
+            display: inline-block;
+            color: #00D9FF;
+            text-decoration: none;
+            font-size: 1.4em;
             font-weight: 600;
-            cursor: pointer;
+            padding: 20px 30px;
+            border: 2px solid #00D9FF;
+            border-radius: 12px;
             transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            background: rgba(0, 217, 255, 0.1);
         }
         
-        .submit-btn:hover {
-            transform: translateY(-2px);
+        .email-link:hover {
+            background: rgba(0, 217, 255, 0.2);
+            transform: translateY(-3px);
             box-shadow: 0 8px 25px rgba(0, 217, 255, 0.3);
         }
         
-        .submit-btn:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-            transform: none;
+        .inquiry-guidelines {
+            text-align: left;
         }
         
-        .status-message {
-            margin-top: 20px;
-            padding: 15px;
-            border-radius: 8px;
-            text-align: center;
-            display: none;
+        .inquiry-guidelines h3 {
+            color: #C9D1D9;
+            margin-bottom: 20px;
+            font-size: 1.2em;
         }
         
-        .status-message.success {
-            background: rgba(34, 197, 94, 0.1);
-            border: 1px solid rgba(34, 197, 94, 0.3);
-            color: #22c55e;
+        .guidelines-list {
+            list-style: none;
+            padding: 0;
         }
         
-        .status-message.error {
-            background: rgba(239, 68, 68, 0.1);
-            border: 1px solid rgba(239, 68, 68, 0.3);
-            color: #ef4444;
+        .guidelines-list li {
+            color: #8B949E;
+            margin-bottom: 12px;
+            padding-left: 20px;
+            position: relative;
+            font-size: 0.95em;
+            line-height: 1.5;
+        }
+        
+        .guidelines-list li:before {
+            content: "▸";
+            color: #00D9FF;
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+        
+        .guidelines-list li strong {
+            color: #C9D1D9;
+        }
+        
+        .privacy-notice {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 25px;
+            margin-top: 30px;
+        }
+        
+        .privacy-notice h4 {
+            color: #00D9FF;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+        
+        .privacy-notice p {
+            color: #8B949E;
+            font-size: 0.9em;
+            line-height: 1.6;
+            margin: 0;
         }
         
         footer {
@@ -486,69 +485,39 @@
         </section>
         
         <section class="contact-section">
-            <h2>Strategic Partnership Inquiry</h2>
+            <h2>Strategic Partnership & Investment Opportunities</h2>
             <p class="intro">
-                Connect with our team to explore collaboration opportunities, strategic acquisitions, or joint development initiatives.
+                For strategic partnerships, joint ventures, and investment opportunities in premium digital assets.
             </p>
             
-            <form class="contact-form" id="contactForm">
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="firstName">First Name *</label>
-                        <input type="text" id="firstName" name="firstName" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="lastName">Last Name *</label>
-                        <input type="text" id="lastName" name="lastName" required>
-                    </div>
+            <div class="contact-info">
+                <div class="email-contact">
+                    <h3>Contact Information</h3>
+                    <a href="mailto:info@mdh-digital.net?subject=Strategic Partnership Inquiry" class="email-link">
+                        info@mdh-digital.net
+                    </a>
                 </div>
                 
-                <div class="form-group">
-                    <label for="organization">Organization *</label>
-                    <input type="text" id="organization" name="organization" required>
+                <div class="inquiry-guidelines">
+                    <h3>When contacting us, please include:</h3>
+                    <ul class="guidelines-list">
+                        <li><strong>Organization Details:</strong> Your company name and sector</li>
+                        <li><strong>Contact Information:</strong> Name, position, and preferred contact method</li>
+                        <li><strong>Interest Areas:</strong> Specific domains or regions of interest</li>
+                        <li><strong>Partnership Type:</strong> Joint venture, acquisition, consortium, or investment</li>
+                        <li><strong>Investment Capacity:</strong> Indicative budget or partnership scale</li>
+                        <li><strong>Timeline:</strong> Expected decision timeframe</li>
+                        <li><strong>Objectives:</strong> Strategic goals and expected outcomes</li>
+                    </ul>
                 </div>
-                
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="email">Email Address *</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Phone Number</label>
-                        <input type="tel" id="phone" name="phone">
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <label for="inquiryType">Type of Inquiry *</label>
-                    <select id="inquiryType" name="inquiryType" required>
-                        <option value="">Select inquiry type</option>
-                        <option value="joint-venture">Joint Venture Opportunity</option>
-                        <option value="acquisition">Strategic Acquisition</option>
-                        <option value="partnership">Technology Partnership</option>
-                        <option value="government">Government Collaboration</option>
-                        <option value="investment">Investment Opportunity</option>
-                        <option value="consortium">Real Estate Consortium</option>
-                        <option value="other">Other</option>
-                    </select>
-                </div>
-                
-                <div class="form-group">
-                    <label for="domains">Domains of Interest</label>
-                    <input type="text" id="domains" name="domains" placeholder="Specify which domains or regions interest you">
-                </div>
-                
-                <div class="form-group">
-                    <label for="message">Message *</label>
-                    <textarea id="message" name="message" required placeholder="Please describe your organization, objectives, and how you envision a potential collaboration or acquisition."></textarea>
-                </div>
-                
-                <button type="submit" class="submit-btn" id="submitBtn">
-                    Send Inquiry
-                </button>
-                
-                <div class="status-message" id="statusMessage"></div>
-            </form>
+            </div>
+            
+            <div class="privacy-notice">
+                <h4>Data Privacy & Security</h4>
+                <p>
+                    All communications and data shared with MDH Digital are treated with strict confidentiality and processed in accordance with international data protection standards. Information is retained only for the duration necessary to evaluate and respond to your inquiry, and is never shared with third parties without explicit consent.
+                </p>
+            </div>
         </section>
         
         <footer>
@@ -558,124 +527,5 @@
             </p>
         </footer>
     </div>
-    
-    <script>
-        document.getElementById('contactForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
-            
-            const submitBtn = document.getElementById('submitBtn');
-            const statusMessage = document.getElementById('statusMessage');
-            
-            // Disable submit button and show loading
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = '<span class="loading"></span> Sending...';
-            statusMessage.style.display = 'none';
-            
-            // Collect form data
-            const formData = new FormData(this);
-            const data = Object.fromEntries(formData);
-            
-            try {
-                // Send to PHP endpoint using FormData to avoid ModSecurity issues
-                const formDataToSend = new FormData();
-                formDataToSend.append('firstName', data.firstName);
-                formDataToSend.append('lastName', data.lastName);
-                formDataToSend.append('organization', data.organization);
-                formDataToSend.append('email', data.email);
-                formDataToSend.append('phone', data.phone || '');
-                formDataToSend.append('inquiryType', data.inquiryType);
-                formDataToSend.append('domains', data.domains || '');
-                formDataToSend.append('message', data.message);
-                formDataToSend.append('source', 'MDH Digital Contact Form');
-                formDataToSend.append('timestamp', new Date().toISOString());
-                
-                const response = await fetch('https://sien.it/contact-form/contact.php', {
-                    method: 'POST',
-                    headers: {
-                        'Accept': 'application/json'
-                    },
-                    body: formDataToSend,
-                    credentials: 'omit'
-                });
-                
-                const result = await response.json();
-                
-                if (response.ok && result.success) {
-                    // Success
-                    statusMessage.className = 'status-message success';
-                    statusMessage.innerHTML = `
-                        <strong>Message sent successfully!</strong><br>
-                        Thank you for your inquiry. We will respond within 24 hours.
-                    `;
-                    statusMessage.style.display = 'block';
-                    
-                    // Reset form
-                    this.reset();
-                    
-                    // Clear any field styling
-                    const inputs = this.querySelectorAll('input, select, textarea');
-                    inputs.forEach(input => {
-                        input.style.borderColor = '';
-                    });
-                    
-                } else {
-                    // Server returned error
-                    throw new Error(result.error || 'Server error occurred');
-                }
-                
-            } catch (error) {
-                console.error('Error sending form:', error);
-                
-                // Show error message
-                statusMessage.className = 'status-message error';
-                statusMessage.innerHTML = `
-                    <strong>Error sending message</strong><br>
-                    ${error.message || 'Please try again or contact us directly at info@mdh-digital.net'}
-                `;
-                statusMessage.style.display = 'block';
-            }
-            
-            // Re-enable submit button
-            submitBtn.disabled = false;
-            submitBtn.innerHTML = 'Send Inquiry';
-        });
-        
-        // Enhanced form validation
-        const form = document.getElementById('contactForm');
-        const inputs = form.querySelectorAll('input[required], select[required], textarea[required]');
-        
-        inputs.forEach(input => {
-            input.addEventListener('blur', validateField);
-            input.addEventListener('input', clearErrors);
-        });
-        
-        function validateField(e) {
-            const field = e.target;
-            const value = field.value.trim();
-            
-            // Remove existing error styling
-            field.style.borderColor = '';
-            
-            if (!value && field.hasAttribute('required')) {
-                field.style.borderColor = '#ef4444';
-                return false;
-            }
-            
-            if (field.type === 'email' && value) {
-                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                if (!emailRegex.test(value)) {
-                    field.style.borderColor = '#ef4444';
-                    return false;
-                }
-            }
-            
-            field.style.borderColor = '#22c55e';
-            return true;
-        }
-        
-        function clearErrors(e) {
-            e.target.style.borderColor = '';
-        }
-    </script>
 </body>
 </html>
