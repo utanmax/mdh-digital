@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +8,11 @@
     <meta property="og:title" content="MDH Digital - Strategic Digital Assets Portfolio">
     <meta property="og:description" content="Premium digital assets and strategic partnerships in the metaverse sector">
     <meta property="og:image" content="https://via.placeholder.com/1200x630/0D1117/00D9FF?text=MDH+DIGITAL">
+    
+    <!-- Brand Assets -->
+    <link rel="icon" type="image/x-icon" href="mdh-logo.ico">
+    <link rel="icon" type="image/png" href="mdh-logo.png">
+    <link rel="icon" type="image/svg+xml" href="mdh-logo.svg">
     
     <style>
         * {
@@ -22,6 +27,23 @@
             color: #ffffff;
             line-height: 1.6;
             overflow-x: hidden;
+        }
+        
+        /* Skip to main content per accessibilità */
+        .skip-to-main {
+            position: absolute;
+            top: -40px;
+            left: 6px;
+            background: #00D9FF;
+            color: #0D1117;
+            padding: 8px;
+            text-decoration: none;
+            border-radius: 4px;
+            z-index: 1000;
+        }
+        
+        .skip-to-main:focus {
+            top: 6px;
         }
         
         .bg-gradient {
@@ -53,6 +75,13 @@
             100% { transform: translate(50px, 50px); }
         }
         
+        /* Riduci motion per utenti con preferenze di accessibilità */
+        @media (prefers-reduced-motion: reduce) {
+            .grid-overlay {
+                animation: none;
+            }
+        }
+        
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -66,6 +95,20 @@
             text-align: center;
         }
         
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .logo-image {
+            width: 60px;
+            height: 60px;
+            filter: brightness(0) invert(1);
+        }
+        
         .logo {
             font-size: 3em;
             font-weight: 700;
@@ -74,7 +117,6 @@
             -webkit-text-fill-color: transparent;
             text-transform: uppercase;
             letter-spacing: 4px;
-            margin-bottom: 15px;
         }
         
         .tagline {
@@ -83,6 +125,10 @@
             letter-spacing: 1px;
             max-width: 600px;
             margin: 0 auto;
+        }
+        
+        main {
+            outline: none;
         }
         
         .hero {
@@ -125,12 +171,18 @@
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+            text-decoration: none;
+            color: inherit;
+            display: block;
         }
         
-        .domain-card:hover {
+        .domain-card:hover,
+        .domain-card:focus {
             transform: translateY(-5px);
             border-color: rgba(0, 217, 255, 0.3);
             box-shadow: 0 10px 30px rgba(0, 217, 255, 0.1);
+            outline: 2px solid #00D9FF;
+            outline-offset: 2px;
         }
         
         .domain-card::before {
@@ -145,7 +197,8 @@
             transition: opacity 0.3s ease;
         }
         
-        .domain-card:hover::before {
+        .domain-card:hover::before,
+        .domain-card:focus::before {
             opacity: 1;
         }
         
@@ -259,10 +312,13 @@
             background: rgba(0, 217, 255, 0.1);
         }
         
-        .email-link:hover {
+        .email-link:hover,
+        .email-link:focus {
             background: rgba(0, 217, 255, 0.2);
             transform: translateY(-3px);
             box-shadow: 0 8px 25px rgba(0, 217, 255, 0.3);
+            outline: 2px solid #00D9FF;
+            outline-offset: 2px;
         }
         
         .inquiry-guidelines {
@@ -337,6 +393,7 @@
             font-size: 0.8em;
         }
         
+        /* Responsive design */
         @media (max-width: 768px) {
             .hero h1 {
                 font-size: 2.5em;
@@ -344,6 +401,11 @@
             
             .logo {
                 font-size: 2em;
+            }
+            
+            .logo-image {
+                width: 40px;
+                height: 40px;
             }
             
             .partnerships {
@@ -354,7 +416,7 @@
                 padding: 30px 20px;
             }
             
-            .form-row {
+            .contact-info {
                 grid-template-columns: 1fr;
             }
             
@@ -376,151 +438,180 @@
         @keyframes spin {
             to { transform: rotate(360deg); }
         }
+        
+        /* Miglioramenti per screen reader */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+        
+        /* Focus visibile per navigazione da tastiera */
+        .domain-card:focus-visible,
+        .email-link:focus-visible {
+            outline: 2px solid #00D9FF;
+            outline-offset: 2px;
+        }
     </style>
 </head>
 <body>
+    <a href="#main-content" class="skip-to-main">Salta al contenuto principale</a>
+    
     <div class="bg-gradient"></div>
-    <div class="grid-overlay"></div>
+    <div class="grid-overlay" aria-hidden="true"></div>
     
     <div class="container">
-        <header>
-            <div class="logo">MDH Digital</div>
+        <header role="banner">
+            <div class="logo-container">
+                <img src="mdh-logo.png" alt="MDH Digital Logo" class="logo-image">
+                <div class="logo">MDH Digital</div>
+            </div>
             <p class="tagline">Strategic Digital Assets & Partnership Development</p>
         </header>
         
-        <section class="hero">
-            <h1>Premium Digital Assets Portfolio</h1>
-            <p class="subtitle">
-                Connecting forward-thinking organizations with strategic digital assets in the metaverse, digital governance, and emerging technology sectors.
-            </p>
-        </section>
-        
-        <section class="domains-grid">
-            <div class="domain-card">
-                <div class="domain-name">estonia-metaverse.com</div>
-                <div class="domain-description">Digital nation infrastructure for Estonia's pioneering e-governance initiatives</div>
-                <div class="domain-potential">Government partnerships • Digital citizenship • E-residency expansion</div>
-            </div>
-            
-            <div class="domain-card">
-                <div class="domain-name">official-estonia-metaverse.com</div>
-                <div class="domain-description">Premium institutional asset for official government metaverse projects</div>
-                <div class="domain-potential">National sovereignty • Digital diplomacy • State-level initiatives</div>
-            </div>
-            
-            <div class="domain-card">
-                <div class="domain-name">japan-metaverse.com</div>
-                <div class="domain-description">Gateway to Japan's advanced gaming and VR technology ecosystem</div>
-                <div class="domain-potential">Gaming industry • Robotics integration • Cultural preservation</div>
-            </div>
-            
-            <div class="domain-card">
-                <div class="domain-name">korea-metaverse.com</div>
-                <div class="domain-description">Strategic positioning in South Korea's digital transformation landscape</div>
-                <div class="domain-potential">K-entertainment • Samsung partnerships • Government tech initiatives</div>
-            </div>
-            
-            <div class="domain-card">
-                <div class="domain-name">seoul-metaverse.com</div>
-                <div class="domain-description">Smart city innovation hub for Seoul's metropolitan digital services</div>
-                <div class="domain-potential">Urban planning • Smart infrastructure • Tourism development</div>
-            </div>
-            
-            <div class="domain-card">
-                <div class="domain-name">singapore-metaverse.com</div>
-                <div class="domain-description">Financial and technological hub for Southeast Asian metaverse expansion</div>
-                <div class="domain-potential">Fintech integration • Regional expansion • Government innovation</div>
-            </div>
-            
-            <div class="domain-card">
-                <div class="domain-name">switzerland-digital.com</div>
-                <div class="domain-description">Swiss precision in digital transformation and blockchain technology</div>
-                <div class="domain-potential">Banking innovation • Crypto regulation • Digital sovereignty</div>
-            </div>
-            
-            <div class="domain-card">
-                <div class="domain-name">estonia-metaverse.eu</div>
-                <div class="domain-description">European Union focused digital governance and regulatory compliance</div>
-                <div class="domain-potential">EU digital strategy • Cross-border services • Regulatory frameworks</div>
-            </div>
-        </section>
-        
-        <section class="partnerships">
-            <h2>Partnership Opportunities</h2>
-            <p style="color: #8B949E; font-size: 1.1em; margin-bottom: 40px;">
-                We specialize in creating strategic alliances that leverage premium digital assets for mutual growth and innovation.
-            </p>
-            
-            <div class="partnerships-grid">
-                <div class="partnership-item">
-                    <h3>Joint Ventures</h3>
-                    <p>Collaborative development of metaverse platforms, digital services, and innovative technology solutions with shared investment and expertise.</p>
-                </div>
-                
-                <div class="partnership-item">
-                    <h3>Real Estate Consortiums</h3>
-                    <p>Strategic partnerships in virtual real estate development, digital land acquisition, and metaverse property management initiatives.</p>
-                </div>
-                
-                <div class="partnership-item">
-                    <h3>Government Relations</h3>
-                    <p>Direct engagement with national and municipal governments for digital transformation projects and e-governance implementations.</p>
-                </div>
-                
-                <div class="partnership-item">
-                    <h3>Technology Integration</h3>
-                    <p>Collaborative development of cutting-edge solutions combining blockchain, AI, VR/AR, and digital identity technologies.</p>
-                </div>
-                
-                <div class="partnership-item">
-                    <h3>Strategic Acquisitions</h3>
-                    <p>Opportunities for institutional investors and corporations to acquire premium digital assets with established market positioning.</p>
-                </div>
-                
-                <div class="partnership-item">
-                    <h3>Innovation Hubs</h3>
-                    <p>Creation of dedicated development centers and incubation programs for next-generation digital governance solutions.</p>
-                </div>
-            </div>
-        </section>
-        
-        <section class="contact-section">
-            <h2>Strategic Partnership & Investment Opportunities</h2>
-            <p class="intro">
-                For strategic partnerships, joint ventures, and investment opportunities in premium digital assets.
-            </p>
-            
-            <div class="contact-info">
-                <div class="email-contact">
-                    <h3>Contact Information</h3>
-                    <a href="mailto:info@mdh-digital.net?subject=Strategic Partnership Inquiry" class="email-link">
-                        info@mdh-digital.net
-                    </a>
-                </div>
-                
-                <div class="inquiry-guidelines">
-                    <h3>When contacting us, please include:</h3>
-                    <ul class="guidelines-list">
-                        <li><strong>Organization Details:</strong> Your company name and sector</li>
-                        <li><strong>Contact Information:</strong> Name, position, and preferred contact method</li>
-                        <li><strong>Interest Areas:</strong> Specific domains or regions of interest</li>
-                        <li><strong>Partnership Type:</strong> Joint venture, acquisition, consortium, or investment</li>
-                        <li><strong>Investment Capacity:</strong> Indicative budget or partnership scale</li>
-                        <li><strong>Timeline:</strong> Expected decision timeframe</li>
-                        <li><strong>Objectives:</strong> Strategic goals and expected outcomes</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="privacy-notice">
-                <h4>Data Privacy & Security</h4>
-                <p>
-                    All communications and data shared with MDH Digital are treated with strict confidentiality and processed in accordance with international data protection standards. Information is retained only for the duration necessary to evaluate and respond to your inquiry, and is never shared with third parties without explicit consent.
+        <main id="main-content" tabindex="-1">
+            <section class="hero">
+                <h1>Premium Digital Assets Portfolio</h1>
+                <p class="subtitle">
+                    Connecting forward-thinking organizations with strategic digital assets in the metaverse, digital governance, and emerging technology sectors.
                 </p>
-            </div>
-        </section>
+            </section>
+            
+            <section class="domains-grid" role="region" aria-label="Portfolio di domini disponibili">
+                <h2 class="sr-only">Domini Disponibili</h2>
+                
+                <a href="https://estonia-metaverse.com" class="domain-card" target="_blank" rel="noopener noreferrer" aria-describedby="estonia-desc">
+                    <div class="domain-name">estonia-metaverse.com</div>
+                    <div class="domain-description" id="estonia-desc">Digital nation infrastructure for Estonia's pioneering e-governance initiatives</div>
+                    <div class="domain-potential">Government partnerships • Digital citizenship • E-residency expansion</div>
+                </a>
+                
+                <a href="https://official-estonia-metaverse.com" class="domain-card" target="_blank" rel="noopener noreferrer" aria-describedby="official-estonia-desc">
+                    <div class="domain-name">official-estonia-metaverse.com</div>
+                    <div class="domain-description" id="official-estonia-desc">Premium institutional asset for official government metaverse projects</div>
+                    <div class="domain-potential">National sovereignty • Digital diplomacy • State-level initiatives</div>
+                </a>
+                
+                <a href="https://japan-metaverse.com" class="domain-card" target="_blank" rel="noopener noreferrer" aria-describedby="japan-desc">
+                    <div class="domain-name">japan-metaverse.com</div>
+                    <div class="domain-description" id="japan-desc">Gateway to Japan's advanced gaming and VR technology ecosystem</div>
+                    <div class="domain-potential">Gaming industry • Robotics integration • Cultural preservation</div>
+                </a>
+                
+                <a href="https://korea-metaverse.com" class="domain-card" target="_blank" rel="noopener noreferrer" aria-describedby="korea-desc">
+                    <div class="domain-name">korea-metaverse.com</div>
+                    <div class="domain-description" id="korea-desc">Strategic positioning in South Korea's digital transformation landscape</div>
+                    <div class="domain-potential">K-entertainment • Samsung partnerships • Government tech initiatives</div>
+                </a>
+                
+                <a href="https://seoul-metaverse.com" class="domain-card" target="_blank" rel="noopener noreferrer" aria-describedby="seoul-desc">
+                    <div class="domain-name">seoul-metaverse.com</div>
+                    <div class="domain-description" id="seoul-desc">Smart city innovation hub for Seoul's metropolitan digital services</div>
+                    <div class="domain-potential">Urban planning • Smart infrastructure • Tourism development</div>
+                </a>
+                
+                <a href="https://singapore-metaverse.com" class="domain-card" target="_blank" rel="noopener noreferrer" aria-describedby="singapore-desc">
+                    <div class="domain-name">singapore-metaverse.com</div>
+                    <div class="domain-description" id="singapore-desc">Financial and technological hub for Southeast Asian metaverse expansion</div>
+                    <div class="domain-potential">Fintech integration • Regional expansion • Government innovation</div>
+                </a>
+                
+                <a href="https://switzerland-digital.com" class="domain-card" target="_blank" rel="noopener noreferrer" aria-describedby="switzerland-desc">
+                    <div class="domain-name">switzerland-digital.com</div>
+                    <div class="domain-description" id="switzerland-desc">Swiss precision in digital transformation and blockchain technology</div>
+                    <div class="domain-potential">Banking innovation • Crypto regulation • Digital sovereignty</div>
+                </a>
+                
+                <a href="https://estonia-metaverse.eu" class="domain-card" target="_blank" rel="noopener noreferrer" aria-describedby="estonia-eu-desc">
+                    <div class="domain-name">estonia-metaverse.eu</div>
+                    <div class="domain-description" id="estonia-eu-desc">European Union focused digital governance and regulatory compliance</div>
+                    <div class="domain-potential">EU digital strategy • Cross-border services • Regulatory frameworks</div>
+                </a>
+            </section>
+            
+            <section class="partnerships" role="region" aria-labelledby="partnerships-title">
+                <h2 id="partnerships-title">Partnership Opportunities</h2>
+                <p style="color: #8B949E; font-size: 1.1em; margin-bottom: 40px;">
+                    We specialize in creating strategic alliances that leverage premium digital assets for mutual growth and innovation.
+                </p>
+                
+                <div class="partnerships-grid">
+                    <div class="partnership-item">
+                        <h3>Joint Ventures</h3>
+                        <p>Collaborative development of metaverse platforms, digital services, and innovative technology solutions with shared investment and expertise.</p>
+                    </div>
+                    
+                    <div class="partnership-item">
+                        <h3>Real Estate Consortiums</h3>
+                        <p>Strategic partnerships in virtual real estate development, digital land acquisition, and metaverse property management initiatives.</p>
+                    </div>
+                    
+                    <div class="partnership-item">
+                        <h3>Government Relations</h3>
+                        <p>Direct engagement with national and municipal governments for digital transformation projects and e-governance implementations.</p>
+                    </div>
+                    
+                    <div class="partnership-item">
+                        <h3>Technology Integration</h3>
+                        <p>Collaborative development of cutting-edge solutions combining blockchain, AI, VR/AR, and digital identity technologies.</p>
+                    </div>
+                    
+                    <div class="partnership-item">
+                        <h3>Strategic Acquisitions</h3>
+                        <p>Opportunities for institutional investors and corporations to acquire premium digital assets with established market positioning.</p>
+                    </div>
+                    
+                    <div class="partnership-item">
+                        <h3>Innovation Hubs</h3>
+                        <p>Creation of dedicated development centers and incubation programs for next-generation digital governance solutions.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="contact-section" role="region" aria-labelledby="contact-title">
+                <h2 id="contact-title">Strategic Partnership & Investment Opportunities</h2>
+                <p class="intro">
+                    For strategic partnerships, joint ventures, and investment opportunities in premium digital assets.
+                </p>
+                
+                <div class="contact-info">
+                    <div class="email-contact">
+                        <h3>Contact Information</h3>
+                        <a href="mailto:info@mdh-digital.net?subject=Strategic Partnership Inquiry" class="email-link">
+                            info@mdh-digital.net
+                        </a>
+                    </div>
+                    
+                    <div class="inquiry-guidelines">
+                        <h3>When contacting us, please include:</h3>
+                        <ul class="guidelines-list">
+                            <li><strong>Organization Details:</strong> Your company name and sector</li>
+                            <li><strong>Contact Information:</strong> Name, position, and preferred contact method</li>
+                            <li><strong>Interest Areas:</strong> Specific domains or regions of interest</li>
+                            <li><strong>Partnership Type:</strong> Joint venture, acquisition, consortium, or investment</li>
+                            <li><strong>Investment Capacity:</strong> Indicative budget or partnership scale</li>
+                            <li><strong>Timeline:</strong> Expected decision timeframe</li>
+                            <li><strong>Objectives:</strong> Strategic goals and expected outcomes</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="privacy-notice">
+                    <h4>Data Privacy & Security</h4>
+                    <p>
+                        All communications and data shared with MDH Digital are treated with strict confidentiality and processed in accordance with international data protection standards. Information is retained only for the duration necessary to evaluate and respond to your inquiry, and is never shared with third parties without explicit consent.
+                    </p>
+                </div>
+            </section>
+        </main>
         
-        <footer>
+        <footer role="contentinfo">
             <p>&copy; 2025 MDH Digital. All rights reserved.</p>
             <p class="footer-note">
                 Strategic partnerships and premium digital asset development
